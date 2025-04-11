@@ -62,7 +62,7 @@ export function PingForm() {
     <div>
         <div className="w-full">
           <div className="flex justify-center items-center px-4 py-2" >
-            <label className="text-right pr-2" for="host">Download cert</label>
+            <label className="text-right pr-2">Download cert</label>
             <a href="/ca-cert.crt" className="bg-teal-500 hover:bg-teal-700 border-teal-500 hover:border-teal-700 text-sm border-4 text-white py-1 mx-4 px-4 rounded" type="submit">            
               Downlaod ca-cert
             </a>
@@ -70,7 +70,7 @@ export function PingForm() {
         </div>
       <form className="w-full" onSubmit={handleSubmit}>
         <div className="flex justify-center items-center py-2" >
-          <label className="text-right px-4" for="host">Ping something</label>
+          <label className="text-right px-4" htmlFor="host">Ping something</label>
           <input
             className="appearance-none block text-white-700 mr-3 py-1 px-2 border border-teal-500"
             type="text"
@@ -92,7 +92,7 @@ export function PingForm() {
         : null
       }
       {responseText
-        ? <div style={{whiteSpace: "pre-wrap"}}>>{responseText}</div>
+        ? <div style={{whiteSpace: "pre-wrap"}}>{responseText}</div>
         : null
       }
     </div>
