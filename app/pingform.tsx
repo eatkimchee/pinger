@@ -35,7 +35,7 @@ export function PingForm() {
     // try getting server from query param
     const queryString = window.location.search;
     const urlParams = new URLSearchParams(queryString);
-    const server = urlParams.get('server') || "http://localhost:3003/ping";
+    const server = urlParams.get('server') || "/api/ping";
 
     try {
       const response = await fetch(server, {
@@ -60,9 +60,17 @@ export function PingForm() {
 
   return (
     <div>
-      <form className="w-full max-w-sm" onSubmit={handleSubmit}>
-        <div className="flex items-center py-2">
-
+        <div className="w-full">
+          <div className="flex justify-center items-center px-4 py-2" >
+            <label className="text-right pr-2" for="host">Download cert</label>
+            <a href="/ca-cert.crt" className="bg-teal-500 hover:bg-teal-700 border-teal-500 hover:border-teal-700 text-sm border-4 text-white py-1 mx-4 px-4 rounded" type="submit">            
+              Downlaod ca-cert
+            </a>
+          </div>
+        </div>
+      <form className="w-full" onSubmit={handleSubmit}>
+        <div className="flex justify-center items-center py-2" >
+          <label className="text-right px-4" for="host">Ping something</label>
           <input
             className="appearance-none block text-white-700 mr-3 py-1 px-2 border border-teal-500"
             type="text"
@@ -84,7 +92,7 @@ export function PingForm() {
         : null
       }
       {responseText
-        ? <div>{responseText}</div>
+        ? <div style={{whiteSpace: "pre-wrap"}}>>{responseText}</div>
         : null
       }
     </div>
