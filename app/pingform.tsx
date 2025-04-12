@@ -1,4 +1,6 @@
 import React, { useState } from 'react';
+import { ArrowDownTrayIcon } from '@heroicons/react/24/outline'
+
 
 export function PingForm() {
   const [formData, setFormData] = useState({
@@ -59,30 +61,43 @@ export function PingForm() {
   };
 
   return (
-    <div>
+    <div className="p-4 w-full max-w-1024">
         <div className="w-full">
-          <div className="flex justify-center items-center px-4 py-2" >
-            <label className="text-right pr-2">Download cert</label>
-            <a href="/ca-cert.crt" className="bg-teal-500 hover:bg-teal-700 border-teal-500 hover:border-teal-700 text-sm border-4 text-white py-1 mx-4 px-4 rounded" type="submit">            
-              Downlaod ca-cert
-            </a>
+          <div className="flex  items-center px-4 py-2" >
           </div>
         </div>
       <form className="w-full" onSubmit={handleSubmit}>
-        <div className="flex justify-center items-center py-2" >
-          <label className="text-right px-4" htmlFor="host">Ping something</label>
-          <input
-            className="appearance-none block text-white-700 mr-3 py-1 px-2 border border-teal-500"
-            type="text"
-            id="host"
-            name="host"
-            placeholder="host"
-            value={formData.host}
-            onChange={handleChange}
-            onClick={onInputClick}
-            required
-          />
-          <button className="flex-shrink-0 bg-teal-500 hover:bg-teal-700 border-teal-500 hover:border-teal-700 text-sm border-4 text-white py-1 px-2 rounded" type="submit">Ping</button>
+        <div className="grid grid-cols-4 gap-6">
+          <div className="text-right">
+            <label className="">Certificate</label>
+          </div>
+          <div className="col-span-3"> 
+            <a href="/ca-cert.crt" download={true} className="flex text-teal-500 ">
+              <div className="flex gap-1 items-center">
+                Download ca-cert.crt
+                <ArrowDownTrayIcon className="flex size-5 text-teal-500" />
+              </div>
+            </a>
+          </div>
+          <div className="text-right">
+            <label className="" htmlFor="host">Ping stuff</label>
+          </div>
+          <div className="col-span-3 ">
+            <div className="flex"> 
+              <input
+                className="appearance-none w-full flex-grow text-white-700 mr-3 py-1 px-2 border border-teal-500"
+                type="text"
+                id="host"
+                name="host"
+                placeholder="host"
+                value={formData.host}
+                onChange={handleChange}
+                onClick={onInputClick}
+                required
+              />
+              <button className="flex-shrink-0 bg-teal-500 hover:bg-teal-700 border-teal-500 hover:border-teal-700 text-sm border-4 text-white py-1 px-4 rounded" type="submit">Send</button>
+            </div>
+          </div>
         </div>
       </form>
       {error
@@ -91,8 +106,11 @@ export function PingForm() {
           </div>
         : null
       }
+      <hr className="text-zinc-700 mt-10" />
       {responseText
-        ? <div style={{whiteSpace: "pre-wrap"}}>{responseText}</div>
+        ? <div className="whitespace-pre-wrap p-4 overflow-x-scroll bg-zinc-900">
+              {responseText}
+          </div>
         : null
       }
     </div>
