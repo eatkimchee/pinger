@@ -108,7 +108,7 @@ export function PingForm() {
       }
       <hr className="text-zinc-700 mt-10" />
       {responseText
-        ? <div className="whitespace-pre-wrap p-4 overflow-x-scroll bg-zinc-900">
+        ? <div className="whitespace-pre-wrap p-4 overflow-x-scroll bg-zinc-900 text-white">
               {responseText}
           </div>
         : null

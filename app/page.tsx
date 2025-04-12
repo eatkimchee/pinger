@@ -24,7 +24,20 @@ export default function Home() {
           </Marquee>
           </div>
             <div className="flex items-center text-grey-500">
-              <Image src="/GHA-horizontal-white.png" width={167} height={50} alt="logo" className="opacity-30 pl-3" />
+              <Image
+                className="hidden dark:block opacity-40"
+                src="/GHA-horizontal-inverse.png"
+                alt="dark-mode-logo"
+                width={167}
+                height={50}
+              />
+              <Image
+                className="mb-4 block dark:hidden opacity-40"
+                src="/GHA-horizontal-primary.png"
+                alt="light-mode-logo"
+                width={167}
+                height={50}
+              />
             </div>
         </footer>
       </div>
